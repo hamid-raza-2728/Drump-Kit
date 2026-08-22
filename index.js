@@ -1,10 +1,16 @@
 n=document.querySelectorAll(".drum");
 for(var i=0;i<n.length;i++){
-document.querySelectorAll(".drum")[i].addEventListener("click",handclick);
+n[i].addEventListener("click", handclick);
 }
 function handclick(){
   var innerbuttonHTML=this.innerHTML;  
-switch(innerbuttonHTML){
+ mykey(innerbuttonHTML);
+}
+
+document.addEventListener("keypress",function(event){
+  mykey(event.key);});
+  function mykey(key){
+   switch(key){
 case "w": 
 var ton1=new Audio("./sounds/tom-1.mp3");
 ton1.play();
@@ -34,6 +40,6 @@ var kick=new Audio("./sounds/kick-bass.mp3");
 kick.play();
 break;  
 default :
-console.log(innerbuttonHTML);
-}
-}
+console.log(key);
+} 
+  }

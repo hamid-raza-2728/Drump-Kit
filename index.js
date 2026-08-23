@@ -5,11 +5,15 @@ n[i].addEventListener("click", handclick);
 function handclick(){
   var innerbuttonHTML=this.innerHTML;  
  mykey(innerbuttonHTML);
+ press(innerbuttonHTML);  
 }
 
 document.addEventListener("keypress",function(event){
-  mykey(event.key);});
+  mykey(event.key);
+  press(event.key);
+  });
   function mykey(key){
+    
    switch(key){
 case "w": 
 var ton1=new Audio("./sounds/tom-1.mp3");
@@ -41,5 +45,14 @@ kick.play();
 break;  
 default :
 console.log(key);
+
 } 
-  }
+  }  
+function press(cureentkey){
+var activebutton=document.querySelector("."+cureentkey); 
+if(activebutton)
+  {activebutton.classList.add("pressed");
+setTimeout(function(){
+  activebutton.classList.remove("pressed");
+},1000);}
+}  
